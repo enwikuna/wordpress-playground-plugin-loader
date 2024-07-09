@@ -16,3 +16,22 @@ If you need help with the implementation, feel free do contact us on agency.enwi
 
 - Token generation
 - Download of products
+
+## Testing
+
+To test the server create a `.env` file in the root directory of the project and add the following content:
+
+```bash
+FREE_PRODUCTS=free
+FREE_PRODUCTS_BASE_PATH=/free.zip
+PROTECTED_PRODUCTS=protected
+PROTECTED_PRODUCTS_BASE_PATH=/protected.zip
+```
+
+Then run the following command:
+
+```bash
+npm run dev
+```
+
+This will start the server on `http://localhost:3000`.
