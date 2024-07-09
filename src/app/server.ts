@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import "dotenv/config";
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { serverRouter } from './routes/server.router';
@@ -8,6 +9,7 @@ export class Server {
 
   constructor() {
     this.server = express();
+    this.server.use(express.static("public"));
     this.server.set('host', process.env.SERVER_HOST || 'localhost');
     this.server.set('port', process.env.SERVER_PORT || 3000);
     this.server.use(bodyParser.json());
