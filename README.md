@@ -17,7 +17,23 @@ If you need help with the implementation, feel free do contact us on agency.enwi
 - Token generation
 - Download of products
 
-## Testing
+## Development
+
+### Requirements
+
+- Node.js
+- npm
+- Docker
+
+### Installation
+
+To install the project run the following command:
+
+```bash
+npm install
+```
+
+### Testing
 
 To test the server create a `.env` file in the root directory of the project and add the following content:
 
