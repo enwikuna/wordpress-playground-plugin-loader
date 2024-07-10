@@ -1,14 +1,6 @@
 export function isProductSupported(product: string, isFree: boolean = false): boolean {
   let supportedProducts: string[];
 
-  console.log(
-    "isFree",
-    isFree,
-    process.env.FREE_PRODUCTS,
-    process.env.FREE_PRODUCTS_BASE_PATH,
-    process.env.PROTECTED_PRODUCTS,
-    process.env.PROTECTED_PRODUCTS_BASE_PATH
-  );
   if (isFree) {
     supportedProducts = process.env.FREE_PRODUCTS ? process.env.FREE_PRODUCTS.split(',') : [];
   } else {
