@@ -51,3 +51,9 @@ npm run dev
 ```
 
 This will start the server on `http://localhost:3000`.
+
+To confirm that server is working correctly, generate a token by calling the following endpoint:
+
+```bash
+GET http://localhost:3000/token/protected
+```
