@@ -6,7 +6,7 @@ Stable tag: 1.0.0\
 License: GPLv3\
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-If you like this project, please consider donating to support the development of this service and other open-source projects:
+If you like this project, please consider donating to support the development of this service and other open-source projects!
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/enwikuna)
 
@@ -29,24 +29,30 @@ Read the installation instructions to install and set up the WordPress Playgroun
 
 ### Minimum Requirements
 
-* Ubuntu server (20.04 LTS or later is recommended)
-* Node.js 17.9.1 or greater is recommended
-* Apache installed and running
-* Git installed
+* [Ubuntu server](https://ubuntu.com/download/server) (20.04 LTS or greater is recommended)
+* [Node.js](https://nodejs.org/) 17.9.1 or greater is recommended
+* [Apache](https://www.apache.org/) installed and running
+* [Git](https://git-scm.com/) installed
 * A domain/subdomain (download.your-domain.com) pointing to your server's IP address
 * OpenSSL installed (usually pre-installed on most Ubuntu systems)
-* Redis installed and running
+* [Redis](https://redis.io/en) installed and running
 
 ### Installation of the downloader
 
-Note: We recommend using Plesk to create a new domain or subdomain on your server.
-This way, you can easily manage the domain and SSL certificates. Also, there is a Node.js extension available for Plesk which makes it easy to manage Node.js services.
-The following instructions are for a manual setup without Plesk on an Ubuntu server.
+> Note: We recommend using Plesk to create a new domain or subdomain on your server.
+> This way, you can easily manage the domain and SSL certificates. Also, there is a Node.js extension available for Plesk which makes it easy to manage Node.js services.
+> The following instructions are for a manual setup without Plesk on an Ubuntu server.
 
 First, ensure that your server is up to date:
 
 ```bash
-  sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
+```
+
+Also, we need to install nano, a text editor, to edit configuration files:
+
+```bash
+sudo apt install nano -y
 ```
 
 Next, create a new directory on your server for the downloader. The name of the folder should match your final target domain.
@@ -55,15 +61,10 @@ You can do this by running the following command:
 
 ```bash
 sudo mkdir -p /var/www/vhosts/download.your-domain.com
-```
-
-Enter the directory:
-
-```bash
 cd /var/www/vhosts/download.your-domain.com
 ```
 
-Now, you need to clone the repository to get the files:
+Now, you need to clone the repository to get the downloader:
 
 ```bash
 git clone https://github.com/enwikuna/wordpress-playground-plugin-loader.git .
@@ -85,8 +86,9 @@ The service should start, typically on `localhost` and port `3000`. If everythin
 It can happen that you need to adjust the port using environment variables if port `3000` is already in use.
 We will talk about this in the next steps.
 
-After testing the service, we need to configure Apache to serve the service on the domain/subdomain you have set up. For that,
-we need to create a new folder for the SSL certificate to secure our service. You can do this by running the following command:
+After testing the service, we need to configure Apache to serve the service on the domain/subdomain you have set up.
+
+For that, we need to create a new folder for the SSL certificate to secure our service. You can do this by running the following command:
 
 ```bash
 sudo mkdir -p /etc/apache2/ssl
@@ -99,7 +101,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ss
 ```
 
 Since the SSL certificates are self-signed, you will be asked to provide some information. Also, the certificate will not be fully trusted by browsers.
-I recommend buying a certificate from a trusted certificate authority for production use. Also, you can use Let's Encrypt to get a free SSL certificate.
+I recommend buying a certificate from a trusted certificate authority for production use. Also, you can use [Let's Encrypt](https://letsencrypt.org/) to get a free SSL certificate.
 
 After generating the SSL certificate, you need to ensure that the Apache SSL module is enabled. You can do this by running the following command:
 
@@ -161,7 +163,7 @@ When it comes to starting the downloader, it's important to know the list of env
 | `PASSWORD_ENCRYPTION_SALT` (required)              | Salt used for password encryption. You need to set a random and strong alpha-numeric string here.                                                                                        | `28113eef17e60bd13cefca2a1b8e1369`            |
 
 Please note that either `PROTECTED_PRODUCTS` or `FREE_PRODUCTS` must be set belong their respective `*_BASE_PATH` environment variables.
-If you want to use both, you can to set both. If you set none, you've lost the purpose of the downloader and some time of your life ;-).
+If you want to use both, you can to set both. If you set none, you've lost the purpose of the downloader and some time of your life ;-)
 
 To start the downloader, you can use a process manager like `pm2` to keep the service running in the background.
 You can install `pm2` by running the following command:
