@@ -250,7 +250,7 @@ function get_steps(): array {
     ),
     array(
       'step'          => 'installPlugin',
-      'pluginZipFile' => array(
+      'pluginData' => array(
         'resource' => 'url',
         'url'      => 'https://download.your-domain.com/download/free/',
       ),
@@ -281,7 +281,7 @@ function get_steps(): array {
       ),
       array(
         'step'          => 'installPlugin',
-        'pluginZipFile' => array(
+        'pluginData' => array(
           'resource' => 'url',
           'url'      => 'https://download.your-domain.com/installer/protected/' . $download_token,
         ),
@@ -299,7 +299,7 @@ function get_steps(): array {
       ),
       array(
         'step'          => 'installPlugin',
-        'pluginZipFile' => array(
+        'pluginData' => array(
           'resource' => 'vfs',
           'path'     => '/wordpress/wp-content/plugins/protected.zip',
         ),
